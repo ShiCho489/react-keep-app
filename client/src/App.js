@@ -1,10 +1,10 @@
 import React, { Components } from 'react'
 import Header from './components/Header'
-import Screen from './components/Screen'
+import Screen from './screens/MainPage'
 import Footer from './components/Footer'
 import {BrowserRouter, Routes, Route } from "react-router-dom"
-import MyNotes from './components/MyNotes'
-import './App.css';
+import MyNotes from './screens/MyNotes'
+
 
 function App() {
   return (

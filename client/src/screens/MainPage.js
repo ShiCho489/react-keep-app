@@ -1,7 +1,8 @@
 import React from 'react'
 import {Container, Row, Button }  from "react-bootstrap"
-import '../components/Screen.css'
+import '../screens/Mainpage.css'
 import Typewriter from 'typewriter-effect'
+import { Link } from 'react-router-dom';
 
 const Screen = () => {
   return (
@@ -20,13 +21,15 @@ typewriter
                 }} />
             </div>
             <div className= "buttonContainer">
-                <a href="/login">
-                    <Button size="lg" className="loginbutton">Login</Button>
-                </a>
+                <Link to="/login" >
+                <Button size="lg" className="loginbutton">Login</Button>
+                </Link>
+                    
+                
             
-                <a href="/signup">
+                <Link to="/signup">
                     <Button size="lg" className="signupbutton" variant="outline-primary">Signup</Button>
-                </a>
+                </Link>
             </div>
         </Row>
         </Container>

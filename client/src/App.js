@@ -1,3 +1,4 @@
+import React, { Components } from 'react'
 import Header from './components/Header'
 import Screen from './components/Screen'
 import Footer from './components/Footer'

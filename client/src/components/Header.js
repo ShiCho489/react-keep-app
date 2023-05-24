@@ -8,12 +8,13 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 
+
 const Header = () => {
   return (
     
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
     <Container>
-      <Navbar.Brand href="/">Keep-app</Navbar.Brand>
+      <Navbar.Brand href="/">Keep App</Navbar.Brand>
 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -32,7 +33,7 @@ const Header = () => {
         <Nav>
           
             <>
-              <Nav.Link href="/mynotes">My Notes</Nav.Link>
+              <Nav.Link href ="/mynotes">My Notes</Nav.Link>
               <NavDropdown
                 
                 id="collasible-nav-dropdown"

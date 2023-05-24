@@ -10,6 +10,7 @@ const Footer = () => {
         bottom: 0,
         display: "flex",
         justifyContent: "center",
+        color: "red",
       }}
     >
       <Container>

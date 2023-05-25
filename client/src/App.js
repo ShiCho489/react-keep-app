@@ -1,6 +1,6 @@
-import React, { Components } from 'react'
+import React from 'react'
 import Header from './components/Header'
-import Screen from './screens/MainPage'
+import MainPage from './screens/MainPage'
 import Footer from './components/Footer'
 import {BrowserRouter, Routes, Route } from "react-router-dom"
 import MyNotes from './screens/MyNotes'
@@ -13,8 +13,8 @@ function App() {
      <main>
       
       <Routes>
-      <Route path='/' component={Screen } exact/>
-      <Route path='/mynotes' Component={()=> <MyNotes />} />
+      <Route path='/' element={<MainPage />} exact/>
+      <Route path='/mynotes' element={<MyNotes />} />
       </Routes>
     
      </main>

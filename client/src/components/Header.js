@@ -7,14 +7,15 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
+import '../components/Header.css'
 
 
 const Header = () => {
   return (
     
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="light">
     <Container>
-      <Navbar.Brand href="/">Keep App</Navbar.Brand>
+      <Navbar.Brand className="brand" href="/" >Keep App</Navbar.Brand>
 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

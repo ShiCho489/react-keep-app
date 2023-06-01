@@ -1,10 +1,14 @@
-const express = require('express');
-const notes = require('./data/notes.js');
-const dotenv = require('dotenv')
+import express from "express";
+import notes from './data/notes.js'
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
 
 
 const app = express();
 dotenv.config();
+
+//Databaseconnected
+connectDB()
 
 
 
@@ -22,4 +26,5 @@ app.get('/api/notes/:id', (req, res) => {
     res.send(note);
 })
 
-app.listen(5001, console.log("Server started at port 5001"));
+app.listen(8000, console.log("Server started at port 8000"));
+

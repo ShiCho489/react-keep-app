@@ -15,16 +15,19 @@ const MyNotes = () => {
     }
   }
  
-  const fetchData = async ()=> {
-    const data = await axios.get("/api/notes");
 
-     console.log(data)
+  useEffect (() => {
+    const fetchData = async ()=> {
+      const { data } = await axios.get('/api/notes');
+       
+      setNotes(data)
+      console.log(data)
+    }
+     fetchData()
+  }, [])
+  
 
-  }
-
-  useEffect(()=> {
-  fetchData();
-  })
+  
   return (
     <MainScreen title='Welcome again'>
       <Link to='createnote'>
@@ -37,9 +40,6 @@ const MyNotes = () => {
               notes.map((note)=> (
 
            
-              
-             
-              
               <Card style= {{ margin: 10}}>
               <Card.Header style={{ display: "flex"}}>
                 <span style={{

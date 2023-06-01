@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import MainScreen from '../components/MainScreen'
 import { Link } from 'react-router-dom'
 import { Button, Card, Badge } from 'react-bootstrap'
@@ -7,12 +7,14 @@ import axios from 'axios'
 
 const MyNotes = () => {
 
+  const[notes, setNotes] = useState([]);
+
   const deleteHandler =(id) => {
     if (window.confirm("Are you sure?")){
       
     }
   }
-
+ 
   const fetchData = async ()=> {
     const data = await axios.get("/api/notes");
 

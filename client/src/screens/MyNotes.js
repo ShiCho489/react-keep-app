@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MainScreen from '../components/MainScreen'
 import { Link } from 'react-router-dom'
 import { Button, Card, Badge } from 'react-bootstrap'
-import notes, {} from "../data/notes"
+import axios from 'axios'
+
 
 const MyNotes = () => {
 
@@ -11,6 +12,17 @@ const MyNotes = () => {
       
     }
   }
+
+  const fetchData = async ()=> {
+    const data = await axios.get("/api/notes");
+
+     console.log(data)
+
+  }
+
+  useEffect(()=> {
+  fetchData();
+  })
   return (
     <MainScreen title='Welcome again'>
       <Link to='createnote'>
@@ -19,7 +31,10 @@ const MyNotes = () => {
           </Link>
         
           {
-            notes.map(note =>(
+              
+              notes.map((note)=> (
+
+           
               
              
               
@@ -33,8 +48,9 @@ const MyNotes = () => {
                   alignSelf: "center",
                   fontsize: 18,
                   
-                  }}>{note.title}</span>
-                  
+                  }}>{note.title}
+                </span>
+                
              
               <div>
                 <Button href={`/note/${note._id}`}>Edit</Button>
@@ -58,9 +74,12 @@ const MyNotes = () => {
               </Card.Body>
               
               </Card>
-             
-            ) )
-          }
+             )
+             )
+
+
+            }
+          
       
       
     

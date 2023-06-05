@@ -3,6 +3,7 @@ import notes from './data/notes.js'
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
+import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,10 @@ app.get('/api/notes', (req, res)=> {
 })
 
 app.use('/api/users', userRoutes);
+
+//error handling middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(5000, console.log("Server started at port 5000"));
 

@@ -2,22 +2,53 @@ import React, { useState } from "react";
 import MainScreen from '../../components/MainScreen'
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
 import "./LoginPage.css";
+import axios from 'axios'
 
 const LoginPage = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   
 
 
 
  
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-   console.log(email, password);
+    
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json"
+        }
+      }
+
+      setLoading(true);
+      
+      const { data } = await axios.post(
+        "/api/users/login",
+        {
+          email,
+          password,
+        },
+        config
+
+      );
+
+      console.log(data);
+
+      localStorage.setItem("userInfo", JSON.stringyfy(data) );
+       setLoading(false);
+      } catch (error) {
+        setError(error.response.data.message)
+      }
+    
   };
 
 
@@ -25,6 +56,8 @@ const LoginPage = ({ history }) => {
   return (
     <MainScreen title='Login'>    
     <div className='loginContainer'>
+    {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+        {loading && <Loading />}
     <Form onSubmit= {submitHandler}>
       <Form.Group controlId="formBasicEmail">
       <Form.Label>Email address</Form.Label>

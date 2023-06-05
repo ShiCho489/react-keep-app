@@ -10,7 +10,8 @@ dotenv.config();
 //Databaseconnected
 connectDB()
 
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
     res.send("API is running");
@@ -20,7 +21,7 @@ app.get('/api/notes', (req, res)=> {
    res.send(notes);
 })
 
-app.use("/api/users", userRoutes);
+app.use('/api/users', userRoutes);
 
 app.listen(5000, console.log("Server started at port 5000"));
 

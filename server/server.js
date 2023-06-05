@@ -2,7 +2,7 @@ import express from "express";
 import notes from './data/notes.js'
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -17,14 +17,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/notes', (req, res)=> {
-    res.send(notes);
+   res.send(notes);
 })
 
-app.get('/api/notes/:id', (req, res) => {
+app.use("/api/users", userRoutes);
 
-    const note = notes.find((note) => note._id === req.params.id);
-    res.send(note);
-})
-
-app.listen(8000, console.log("Server started at port 8000"));
+app.listen(5000, console.log("Server started at port 5000"));
 

@@ -13,7 +13,7 @@ const RegisterPage = () => {
     <div className="loginContainer">
     <Form >
       <Form.Group controlId="formBasicEmail">
-      <Form.Label>Name</Form.Label>
+      <Form.Label className="name">Name</Form.Label>
             <Form.Control
               type="name"
               //value={email}
@@ -23,7 +23,7 @@ const RegisterPage = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
+            <Form.Label className="email">Email</Form.Label>
             <Form.Control
               type="email"
              // value={password}
@@ -32,7 +32,7 @@ const RegisterPage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label className="basic">Password</Form.Label>
             <Form.Control
               type="password"
              // value={password}
@@ -41,7 +41,7 @@ const RegisterPage = () => {
             />
           </Form.Group>
           <Form.Group controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label className="confirm">Confirm Password</Form.Label>
             <Form.Control
              
               type="password"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainScreen from '../../components/MainScreen'
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -14,7 +14,12 @@ const LoginPage = ({ history }) => {
   const [loading, setLoading] = useState(false);
   
 
+useEffect (() => {
+  const userInfo = localStorage.getItem("userInfo");
 
+  if(userInfo) 
+  history.push("/mynotes")
+}, [history])
 
  
 
@@ -46,7 +51,7 @@ const LoginPage = ({ history }) => {
       localStorage.setItem("userInfo", JSON.stringyfy(data) );
        setLoading(false);
       } catch (error) {
-        setError(error.response.data.message)
+        setError(error)
       }
     
   };

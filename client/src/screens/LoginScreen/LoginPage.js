@@ -73,9 +73,8 @@ useEffect (() => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-
           <Form.Group controlId="formBasicPassword">
-      <Form.Label>Password</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               value={password}
@@ -83,6 +82,8 @@ useEffect (() => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+
+         
 
           <Button className= "button" variant="primary" type="submit">Submit</Button>
       

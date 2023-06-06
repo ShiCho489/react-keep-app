@@ -19,6 +19,8 @@ function App() {
       <Route path='/login' element={<LoginPage />} exact />
       <Route path='/register' element={<RegisterPage />} exact />
        <Route path='/mynotes' element={<MyNotes />} />
+
+
       </Routes>
     
      </main>

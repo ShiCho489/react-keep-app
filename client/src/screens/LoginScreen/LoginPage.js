@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import "./LoginPage.css";
-import axios from 'axios'
+
 
 const LoginPage = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -25,36 +25,9 @@ useEffect (() => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    
 
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json"
-        }
-      }
-
-      setLoading(true);
-      
-      const { data } = await axios.post(
-        "/api/users/login",
-        {
-          email,
-          password,
-        },
-        config
-
-      );
-
-      console.log(data);
-
-      localStorage.setItem("userInfo", JSON.stringyfy(data) );
-       setLoading(false);
-      } catch (error) {
-        setError(error)
-      }
-    
-  };
+    console.log(email)
+    };
 
 
 

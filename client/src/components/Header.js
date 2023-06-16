@@ -7,10 +7,13 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
+import { Link } from "react-router-dom"
 import '../components/Header.css'
 
 
 const Header = () => {
+
+
   return (
     
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="light">
@@ -51,7 +54,10 @@ const Header = () => {
                 </NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item >
+                <NavDropdown.Item onClick={()=> {
+                  localStorage.removeItem("userInfo")
+                 
+                }}>
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>

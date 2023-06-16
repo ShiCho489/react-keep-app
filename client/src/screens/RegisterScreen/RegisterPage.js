@@ -10,13 +10,11 @@ const RegisterPage = () => {
 
   const [email, setEmail] = useState("");
   const[name, setName] = useState("");
-  const[pic, setPic]= useState(
-    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
-
+ 
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState(null);
-    const [picMessage, setPicMessage] = useState(null);
+    
     const [error, setError] = useState("");
     const [loading, setLoading]= useState("");
 
@@ -24,27 +22,7 @@ const RegisterPage = () => {
     const submitHandler = async (e) => {
       e.preventDefault();
 
-      if (password !== confirmpassword) {
-        setMessage("Passwords do not match");
-      }else {
-        setMessage(null);
-       try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-
-        setLoading(true);
-
-        const { data } = await axios.post(
-          "/api/users",
-          { name, pic, email, password },
-          config
-        )
-      } catch (error) {
-        setError(error)
-        }
+     console.log(email,name)
       }
 
   return (
@@ -92,10 +70,7 @@ const RegisterPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="pic">
-           <label for="formFile" class="form-label">Profile Picture</label>
-          <input class="form-control" type="file" id="formFile" />
-         </Form.Group>
+          
 
          <Button className="button" variant="primary" type="submit">
             Register
@@ -111,7 +86,7 @@ const RegisterPage = () => {
     </MainScreen>
     
   )
-    
+  
   }
 
   export default RegisterPage;

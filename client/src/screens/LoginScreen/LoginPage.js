@@ -5,28 +5,36 @@ import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import "./LoginPage.css";
+import { login } from "../../actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 
 const LoginPage = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
   
+ 
 
-useEffect (() => {
-  const userInfo = localStorage.getItem("userInfo");
+  const dispatch = useDispatch();
 
-  if(userInfo) 
-  history.push("/mynotes")
-}, [history])
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mynotes");
+    }
+  }, [history, userInfo]);
+
 
  
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    console.log(email)
+    dispatch(login(email, password))
     };
 
 

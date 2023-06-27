@@ -1,4 +1,4 @@
-
+import React, { useEffect } from "react";
 import {
   Container,
   Form,
@@ -7,12 +7,23 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
 import '../components/Header.css'
+import {} from "react-router-dom";
+import { logout } from "../actions/userActions";
 
+const Header = ({ setSearch }) => {
+  const dispatch = useDispatch();
 
-const Header = () => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
+  const logoutHandler = () => {
+    dispatch(logout());
+   
+  };
+
+  useEffect(() => {}, [userInfo]);
 
   return (
     
@@ -29,13 +40,13 @@ const Header = () => {
                 type="text"
                 placeholder="Search"
                 className="mr-sm-2"
-                
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Form>
         
         </Nav>
         <Nav>
-          
+        {userInfo ? (
             <>
               <Nav.Link href ="/mynotes">My Notes</Nav.Link>
               <NavDropdown
@@ -54,17 +65,14 @@ const Header = () => {
                 </NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={()=> {
-                  localStorage.removeItem("userInfo")
-                 
-                }}>
+                <NavDropdown.Item onClick={logoutHandler}>
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
             </>
-          
+        ) : (
             <Nav.Link href="/login">Login</Nav.Link>
-          
+            )}
         </Nav>
       </Navbar.Collapse>
     </Container>

@@ -7,6 +7,7 @@ import ErrorMessage from "../../components/ErrorMessage";
 import "./LoginPage.css";
 import { login } from "../../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -21,12 +22,15 @@ const LoginPage = ({ history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/mynotes");
+      navigate("/mynotes");
     }
-  }, [history, userInfo]);
+  }, [navigate, userInfo]);
+
+  
 
 
  

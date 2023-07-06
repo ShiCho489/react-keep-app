@@ -1,29 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, Row, Col } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import "./RegisterPage.css";
+import { register } from "../../actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
 
   const [email, setEmail] = useState("");
   const[name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
  
-    const [password, setPassword] = useState("");
-    const [confirmpassword, setConfirmPassword] = useState("");
-    const [message, setMessage] = useState(null);
-    
-    const [error, setError] = useState("");
-    const [loading, setLoading]= useState("");
+  
 
+  const dispatch = useDispatch();
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
+  const navigate = useNavigate();
 
-    const submitHandler = async (e) => {
-      e.preventDefault();
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/mynotes");
+    }
+  }, [navigate, userInfo]);
 
-     console.log(email,name)
-      }
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    if(password !== confirmpassword){
+      setMessage("Passwords do not match");
+    }else{
+      dispatch(register(name, email, password));
+    }
+  };
 
   return (
     <MainScreen title= "REGISTER">

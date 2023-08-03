@@ -9,6 +9,7 @@ import { register } from "../../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
+
 const RegisterPage = () => {
 
   const [email, setEmail] = useState("");
@@ -20,9 +21,12 @@ const RegisterPage = () => {
   
 
   const dispatch = useDispatch();
+
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
+  
   const navigate = useNavigate();
+
 
   useEffect(() => {
     if (userInfo) {

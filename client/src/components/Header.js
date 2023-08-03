@@ -10,16 +10,20 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import '../components/Header.css'
 import {} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { logout } from "../actions/userActions";
 
 const Header = ({ setSearch }) => {
   const dispatch = useDispatch();
+
+  let navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const logoutHandler = () => {
     dispatch(logout());
+    navigate('/');
    
   };
 
@@ -34,7 +38,7 @@ const Header = ({ setSearch }) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="m-auto">
-          
+        {userInfo && (
             <Form inline>
               <FormControl
                 type="text"
@@ -43,14 +47,14 @@ const Header = ({ setSearch }) => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </Form>
-        
+          )}
         </Nav>
         <Nav>
         {userInfo ? (
             <>
               <Nav.Link href ="/mynotes">My Notes</Nav.Link>
               <NavDropdown
-                
+                title={`${userInfo.name}`}
                 id="collasible-nav-dropdown"
               >
                 <NavDropdown.Item href="/profile">
@@ -66,6 +70,7 @@ const Header = ({ setSearch }) => {
 
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logoutHandler}>
+                  
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>

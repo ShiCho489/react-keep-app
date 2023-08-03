@@ -12,6 +12,7 @@ import { useState } from "react";
 function App() {
 
   const [search, setSearch] = useState("");
+  console.log(search);
   return (
     <BrowserRouter>
      <Header setSearch={(s) => setSearch(s)}/>
@@ -21,9 +22,9 @@ function App() {
       <Route path='/' element={<MainPage />} exact/>
       <Route path='/login' element={<LoginPage />} exact />
       <Route path='/register' element={<RegisterPage />} exact />
-       <Route path='/mynotes' element={({ history }) => (
-        <MyNotes search={search} history={history}/> 
-       )}
+       <Route path='/mynotes' element={
+        <MyNotes search={search} /> 
+       }
        />
 
 

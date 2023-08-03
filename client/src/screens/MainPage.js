@@ -1,17 +1,20 @@
-//import React, { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {Container, Row, Button }  from "react-bootstrap"
 import '../screens/Mainpage.css'
+
 import Typewriter from 'typewriter-effect'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Screen = ({ history }) => {
+const Screen = () => {
 
-    //useEffect (() => {
-        
-      
-        //if(userInfo) 
-       // history.push("/mynotes")
-      //}, [history])
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const userInfo = localStorage.getItem("userInfo");
+        if (userInfo) {
+          navigate("/mynotes");
+        }
+      }, []);
       
   return (
     <div className="main">
